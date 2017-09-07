@@ -13,7 +13,7 @@ resources:
     version:
       count: 2
     flags:
-      - replicas
+      - replicas-mini
 
   - name: docker-options-mini
     type: dockerOptions
