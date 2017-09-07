@@ -1,37 +1,37 @@
 jobs:
-  - name: pipelines-demo-manifest
+  - name: pipelines-demo-manifest-mini
     type: manifest
     steps:
-     - IN: pipelines-demo-image
+     - IN: pipelines-demo-image-mini
      - TASK: managed
     on_success:
      - NOTIFY: irc
 
-  - name: deploy-pipelines-demo
+  - name: deploy-pipelines-demo-mini
     type: deploy
     flags:
-      - job-flag
+      - job-flag-mini
     steps:
-      - IN: pipelines-demo-manifest
-      - IN: docker-options
-      - IN: ecs-cluster
-      - IN: replicas
+      - IN: pipelines-demo-manifest-mini
+      - IN: docker-options-mini
+      - IN: ecs-cluster-mini
+      - IN: replicas-mini
       - TASK: managed
         deployMethod: upgrade
-  - name: runSh
+  - name: runSh-mini
     type: runSh
     allowPublicAccess: true
     steps:
-      - IN: pipelines-demo-manifest
+      - IN: pipelines-demo-manifest-mini
       - TASK:
         - script: echo 'This block executes when the TASK starts'
         - script: echo "versionName=satble" >> $JOB_STATE/runSh.env;
 
 
-  - name: runSh3
+  - name: runSh3-mini
     type: runSh
     steps:
-      - IN: deploy-pipelines-demo
+      - IN: deploy-pipelines-demo-mini
       - TASK:
         - script: echo 'This block executes when the TASK starts'
         - script: echo "versionName=satble" >> $JOB_STATE/runSh3.env;
