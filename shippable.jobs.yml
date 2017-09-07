@@ -1,0 +1,37 @@
+jobs:
+  - name: pipelines-demo-manifest
+    type: manifest
+    steps:
+     - IN: pipelines-demo-image
+     - TASK: managed
+    on_success:
+     - NOTIFY: irc
+
+  - name: deploy-pipelines-demo
+    type: deploy
+    flags:
+      - job-flag
+    steps:
+      - IN: pipelines-demo-manifest
+      - IN: docker-options
+      - IN: ecs-cluster
+      - IN: replicas
+      - TASK: managed
+        deployMethod: upgrade
+  - name: runSh
+    type: runSh
+    allowPublicAccess: true
+    steps:
+      - IN: pipelines-demo-manifest
+      - TASK:
+        - script: echo 'This block executes when the TASK starts'
+        - script: echo "versionName=satble" >> $JOB_STATE/runSh.env;
+
+
+  - name: runSh3
+    type: runSh
+    steps:
+      - IN: deploy-pipelines-demo
+      - TASK:
+        - script: echo 'This block executes when the TASK starts'
+        - script: echo "versionName=satble" >> $JOB_STATE/runSh3.env;
