@@ -5,7 +5,7 @@ jobs:
      - IN: pipelines-demo-image-mini
      - TASK: managed
     on_success:
-     - NOTIFY: irc
+     - NOTIFY: irc-mini
 
   - name: deploy-pipelines-demo-mini
     type: deploy
