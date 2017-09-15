@@ -40,7 +40,7 @@ jobs:
   - name: runSh-test
     type: runSh
     steps:
-      - OUT: replicas-mini
+      - IN: replicas-mini
       - TASK:
         - script: echo 'This block executes when the TASK starts'
         - script: echo "versionName=satble" >> $JOB_STATE/runSh3.env;
