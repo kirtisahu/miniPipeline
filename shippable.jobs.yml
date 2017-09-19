@@ -18,6 +18,7 @@ jobs:
       - IN: replicas-mini
       - TASK: managed
         deployMethod: upgrade
+
   - name: runSh-mini
     type: runSh
     allowPublicAccess: true
@@ -45,3 +46,32 @@ jobs:
         - script: echo 'This block executes when the TASK starts'
         - script: echo "versionName=satble" >> $JOB_STATE/runSh3.env;
 
+  - name: mini-downstream
+    type: manifest
+    steps:
+     - IN: runSh-mini
+     - TASK: managed
+
+  - name: mini-downstream-child
+    type: manifest
+    steps:
+     - IN: mini-downstream
+     - TASK: managed
+
+  - name: mini-downstream-parent
+    type: runSh
+    allowPublicAccess: true
+    steps:
+      - OUT: mini-downstream
+      - TASK:
+        - script: echo 'This block executes when the TASK starts'
+        - script: echo "versionName=satble" >> $JOB_STATE/runSh.env;
+
+  - name: mini-downstream-ancestor
+    type: runSh
+    allowPublicAccess: true
+    steps:
+      - OUT: mini-downstream-parent
+      - TASK:
+        - script: echo 'This block executes when the TASK starts'
+        - script: echo "versionName=satble" >> $JOB_STATE/runSh.env;
