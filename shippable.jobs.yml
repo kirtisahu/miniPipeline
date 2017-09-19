@@ -50,6 +50,7 @@ jobs:
     type: manifest
     steps:
      - IN: runSh-mini
+     - IN: mini-downstream-parent
      - TASK: managed
 
   - name: mini-downstream-child
@@ -63,6 +64,7 @@ jobs:
     allowPublicAccess: true
     steps:
       - OUT: mini-downstream
+      - IN: mini-downstream-ancestor
       - TASK:
         - script: echo 'This block executes when the TASK starts'
         - script: echo "versionName=satble" >> $JOB_STATE/runSh.env;
