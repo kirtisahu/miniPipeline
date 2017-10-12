@@ -13,8 +13,7 @@ jobs:
       - job-flag-mini
     steps:
       - IN: pipelines-demo-manifest-mini
-      - IN: docker-options-mini
-      - IN: replicas-mini
+      - IN: ecs-cluster-mini
       - TASK: managed
         deployMethod: upgrade
 
