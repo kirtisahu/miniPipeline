@@ -58,6 +58,8 @@ jobs:
     steps:
      - IN: mini-downstream
      - TASK: managed
+    flags:
+      - downstream
 
   - name: mini-downstream-parent
     type: runSh
