@@ -13,7 +13,6 @@ jobs:
       - job-flag-mini
     steps:
       - IN: ecs-cluster-mini
-      - IN: pipelines-demo-manifest-mini
       - IN: docker-options-mini
       - IN: replicas-mini
       - TASK: managed
