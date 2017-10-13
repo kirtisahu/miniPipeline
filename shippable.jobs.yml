@@ -75,7 +75,6 @@ jobs:
     type: runSh
     allowPublicAccess: true
     steps:
-      - OUT: mini-downstream-parent
       - TASK:
         - script: echo 'This block executes when the TASK starts'
         - script: echo "versionName=satble" >> $JOB_STATE/runSh.env;
