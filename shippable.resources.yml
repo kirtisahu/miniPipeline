@@ -34,3 +34,12 @@ resources:
      method: irc
      recipients:
        -  "chat.freenode.net#test-rc123"
+
+  - name: pipelines-test-orphan-res
+    type: image
+    integration: shipdeploy
+    pointer:
+      sourceName: "shippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamplesshippablesamples/samplepipelinesdemo"
+      isPull: false
+    seed:
+      versionName: "latest"
