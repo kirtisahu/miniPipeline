@@ -22,7 +22,7 @@ jobs:
   - name: runSh-mini
     type: runSh
     runtime:
-      nodePool: u_16_test
+      nodePool: c7-test
     allowPublicAccess: true
     steps:
       - IN: pipelines-demo-manifest-mini
