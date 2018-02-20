@@ -21,6 +21,8 @@ jobs:
 
   - name: runSh-mini
     type: runSh
+    runtime:
+      nodePool: u_16_test
     allowPublicAccess: true
     steps:
       - IN: pipelines-demo-manifest-mini
