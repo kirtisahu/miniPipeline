@@ -52,6 +52,7 @@ jobs:
     type: manifest
     steps:
      - IN: runSh-mini
+     - IN: pipelines-test-orphan-res
      - IN: mini-downstream-parent
      - TASK: managed
 
