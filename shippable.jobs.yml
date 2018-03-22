@@ -52,7 +52,6 @@ jobs:
     type: manifest
     steps:
      - IN: runSh-mini
-     - IN: pipelines-test-orphan-res
      - IN: mini-downstream-parent
      - TASK: managed
 
@@ -78,7 +77,6 @@ jobs:
     type: runSh
     allowPublicAccess: true
     steps:
-      - IN: pipelines-test-orphan-res
       - TASK:
         - script: echo 'This block executes when the TASK starts'
         - script: echo "versionName=satble" >> $JOB_STATE/runSh.env;
