@@ -13,8 +13,8 @@ before_script:
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
 
-runtime:                
-  nodePool: Node-pool-name
+#runtime:                
+#  nodePool: Node-pool-name
      
 script:
   - echo $COMMITTER
