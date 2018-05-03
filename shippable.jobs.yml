@@ -19,7 +19,7 @@ jobs:
       - TASK: managed
         deployMethod: upgrade
 
-  - name: runSh-mini
+  - name: runSh-mini-runSh-mini-runSh-mini-runSh-mini
     type: runSh
     runtime:
       nodePool: c7-test
